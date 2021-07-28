@@ -1,13 +1,17 @@
-#! /bin/bash
-myipsettings='ip a'
-echo "hello world"
-$myipsettings > netconfig.txt
+# Script Name:      Network Adapter Script
+# Author:           MarburgJA
+# Last Rev:         20210727
+# Purpose:          Show Network Config
 
-# Network Adapter Script
-# Author: MarburgJA
-# Last Rev: 20210726
-# Purpose: Show Network Config
-# No Variables
-# No Functions
+
+#! /bin/bash
+
+# Variable
+myipsettings=$(ip a)
+
 # Main
+echo "hello world"
+echo $myipsettings
+echo $myipsettings > netconfig.txt
+
 # End
