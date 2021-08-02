@@ -5,11 +5,11 @@
 # Purpose:          Finds a dir, or creates a new dir
 
 # Variables
-listem="ls"
+listem=ls
 
 # Functions
 dirmaker(){
-    for item in $listem
+    until [ -e ./$dirname ]
     do
         mkdir $dirname
     done
