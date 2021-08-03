@@ -17,6 +17,7 @@ dirmaker(){
 
 # Main
 $listem
+echo "Enter New Directory Name:"
 read dirname
 if [[ ! -e ./$dirname ]]
 then
