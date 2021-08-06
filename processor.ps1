@@ -6,13 +6,13 @@
 # Main
 
 # prints/sorts all running processes by CPU usage high>low
-get-process | sort cpu -descending
+get-process | sort-object cpu -descending
 
 # prints/sorts all running processes by PID number high>low
-get-process | sort id -descending
+get-process | sort-object id -descending
 
 # prints/sorts all running processes by Working Set high>low
-get-process | sort ws -descending
+get-process | sort-object ws -descending
 
 # open internet explorer to *website*
 [system.diagnostics.process]::start("iexplore","https://owasp.org/www-project-top-ten/")
