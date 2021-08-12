@@ -16,5 +16,6 @@ domaindigger(){
 echo "Enter Domain To Query..."
 read domain
 domaindigger > /home/marburgja/Desktop/domaindigger.txt
+gedit /home/marburgja/Desktop/domaindigger.txt
 
 # End
