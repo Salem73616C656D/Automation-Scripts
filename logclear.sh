@@ -3,7 +3,7 @@
 # Author:           marburgja
 # Last Rev:         20210903
 # Purpose:          clear syslog and wtmp logs
-
+# Conditions:       **Run Sudo**
 # Variables
 
 dir=/var/log/
