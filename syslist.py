@@ -4,10 +4,10 @@
 # Last Rev:         20210907
 # Purpose:          lists system spec. information
 
+# Libraries
+import subprocess
 
 # Main
-
-import subprocess
 
 print("Hostname")
 host=subprocess.run(["hostname"])
