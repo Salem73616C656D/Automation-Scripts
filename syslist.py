@@ -3,7 +3,7 @@
 # Author:           marburgja
 # Last Rev:         20210907
 # Purpose:          lists system spec. information
-# Comment:          I ran into a few forum comments saying that os was deprecated so I used subprocess instead
+
 
 # Main
 
