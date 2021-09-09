@@ -19,6 +19,8 @@ def dirreader():
 
         for dir in dirs:
             print(os.path.join(root, dir))
+        
+        files[:] = [x for x in files if not x.startswith('.')]
 
         for file in files:
             print(os.path.join(root, file))        
