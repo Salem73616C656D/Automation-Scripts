@@ -16,7 +16,7 @@ print(generic_list[3])
 print(generic_list[5:10])
 
 # Change Indexed Item 7 To A New Item
-generic_list[7]= 'newthing'
+generic_list[7]= 'onion'
 
 # Reprint To Veryify Change
 print(generic_list)
