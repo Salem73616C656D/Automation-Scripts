@@ -3,6 +3,7 @@
 # Author:               marburgja
 # Last Rev:             20210915
 # Purpose:              use psutil to give various processes
+# Reference:            Courtney Hans (thank you)
 
 # Commands
 # sudo apt install python3
