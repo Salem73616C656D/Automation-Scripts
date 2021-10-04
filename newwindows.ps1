@@ -1,6 +1,6 @@
 # Script Name:      Windows Configuration Script
 # Author:           marburgja
-# Last Rev:         20210809
+# Last Rev:         20211004
 # Purpose:          Setup a new Windows endpoint machine
 
 # Variables
@@ -66,5 +66,19 @@ if($smb.State -eq "Disabled") {
 } else {
     Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 }
+
+# Enable Auto Lock-Screen Timeout
+powercfg.exe /setacvalueindex SCHEME_CURRENT SUB_VIDEO VIDEOCONLOCK 900
+powercfg.exe /setactive SCHEME_CURRENT
+
+# Enable Windows Defender
+$windef=Get-MpComputerStatus | select RealTimeProtectionEnabled
+
+if($windef.State -eq Enabled) {
+    Write-Host "Windows Defender: ENABLED"
+} else {
+    set-MpPreference -DisableRealtimeMonitoring $False
+}
+
 
 # End 
