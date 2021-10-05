@@ -1,0 +1,24 @@
+#! /usr/bin/env python3
+# Script Name:      servercheck
+# Author:           marburgja
+# Last Rev:         20211005
+# Purpose:          verify selected machines are network operational
+
+# Libraries
+import os
+import time
+from time import gmtime, strftime
+
+# Variables
+ip=input("Enter IP Address:")
+ping=os.system("ping -c 1 " + ip)
+
+# Main
+while True:
+    time.sleep(2)
+    current_time=strftime("%x %X", gmtime())
+    if ping == 0:
+        print (ip + " is AVAILABLE " + current_time)
+    else:
+        print(ip + " is UNAVAILABLE " + current_time)
+        
