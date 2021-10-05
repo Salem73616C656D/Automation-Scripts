@@ -21,4 +21,6 @@ while True:
         print (ip + " is AVAILABLE " + current_time)
     else:
         print(ip + " is UNAVAILABLE " + current_time)
+
+# End
         
