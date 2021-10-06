@@ -16,19 +16,20 @@ from email.mime.text import MIMEText
 # Variables
 ip=input("Enter IP Address:")
 sender_address='joshm581@gmail.com'
-sender_pass='WeatherTech59%!'
+sender_pass='xxxxxxxxxx' #password
 receiver_address='joshm581@gmail.com'
 server_status=1
 
 # Main
 while True:
     time.sleep(2)
-    ping=os.system("ping -c 1 " + ip + "> /dev/null")
+    ping=os.system("ping -c 1 " + ip + "> /dev/null") #to reference ping without having it show up in terminal
     current_time=strftime("%x %X", gmtime())
     message=MIMEMultipart()
     message['From']=sender_address
     message['To']=receiver_address
     message['Subject']='A Server Has Changed Status'
+    # print to terminal 'server availability
     if ping == 0:
         print (ip + " is AVAILABLE " + current_time)
     else:
