@@ -8,19 +8,32 @@
 import os
 import time
 from time import gmtime, strftime
-
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 # Variables
 ip=input("Enter IP Address:")
 ping=os.system("ping -c 1 " + ip)
+sender_address='joshm581@gmail.com'
+sender_pass='WeatherTech59%!'
+receiver_address='joshm581@gmail.com'
 
 # Main
 while True:
     time.sleep(2)
     current_time=strftime("%x %X", gmtime())
+    message=MIMEMultipart()
+    message['From']=sender_address
+    message['To']=receiver_address
+    message['Subject']='A Server Has Changed Status'
+    mail_contentup=(ip + " is now AVAILABLE" + current_time)
+    mail_contentdown=(ip + " is now UNAVAILABLE " + current_time)
     if ping == 0:
         print (ip + " is AVAILABLE " + current_time)
+        message.attach(MIMEText(mail_contentup, 'plain'))
     else:
         print(ip + " is UNAVAILABLE " + current_time)
+        message.attach(MIMEText(mail_contentdown, 'plain'))
 
 # End
         
