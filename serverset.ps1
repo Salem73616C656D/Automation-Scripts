@@ -1,7 +1,7 @@
-# Script Name:      Windows Configuration Script
+# Script Name:      serverset
 # Author:           marburgja
-# Last Rev:         20211004
-# Purpose:          Setup a new Windows endpoint machine
+# Last Rev:         20211007
+# Purpose:          Configure CIS controls on new server
 
 # Main
 
