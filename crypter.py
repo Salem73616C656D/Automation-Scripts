@@ -27,15 +27,6 @@ def load_key():
     """
     return open("key.key", "rb").read()
 
-def recurse_encrypt(filename):
-    key=load_key
-    f = Fernet(key)
-    with open(filename, "rb") as file:
-        file_data = file.read()
-    encrypted_file = f.encrypt(file_data)
-    with open(filename, "wb") as file:
-        file.write(encrypted_file)
-
 def print_options():
             print("0. Write a Key")
             print("1. Encrypt a File")
@@ -48,7 +39,7 @@ def print_options():
 
 def main():
     print_options()
-    choice=input("Enter your choice [1-5]: ")
+    choice=input("Enter your choice [1-6]: ")
 
     if choice=="0":
         write_key()
@@ -120,9 +111,21 @@ def main():
         
 
 
-    elif choice=="6":   
-        key=load_key()
-        f=Fernet(key)
+    elif choice=="6": 
+        def recursive_decrypter(filename):
+            key=load_key()
+            f=Fernet(key)
+            with open(filename, "rb") as file:
+                encrypted_data = file.read()
+                decrypted_data = f.decrypt(encrypted_data)
+            with open(filename, "wb") as file:
+                file.write(decrypted_data)
+        depath=input("Enter Filepath for Recursive Decryption:")
+        for (root, dirs, filenames) in os.walk(depath):
+            for file in filenames:
+                filename = os.path.join(root,file)
+                recursive_decrypter(filename)
+
 
     elif choice=="7":
         exit
