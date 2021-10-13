@@ -38,101 +38,103 @@ def print_options():
             print("7. Exit Menu")
 
 def main():
-    print_options()
-    choice=input("Enter your choice [1-6]: ")
-
-    if choice=="0":
-        write_key()
-        print("Key Created")
-
-    elif choice=="1":
-        key=load_key()
-        f=Fernet(key)
-        time.sleep(1)
-        path=input("Enter Filepath:")
-        time.sleep(1)
-        with open(path, "rb") as file:
-            file_data=file.read()
-            encrypted_data=f.encrypt(file_data)
-        with open(path, "wb") as file:
-            file.write(encrypted_data)
-            time.sleep(1)
-        print("Encryption Successful")
-
-    elif choice=="2":
-        key=load_key()
-        f=Fernet(key)
-        write_key()
-        path=input("Enter Filepath:")
-        with open(path, "rb") as file:
-            encrypted_data=file.read()
-            decrypted_data=f.decrypt(encrypted_data)
-        with open(path, "wb") as file:
-            file.write(decrypted_data)
-        print("Decryption Successful")
-
-    elif choice=="3":
-        key=load_key()
-        f=Fernet(key)
-        string=input("Enter String To Encrypt:")
-        estring=string.encode()
-        encrypted=f.encrypt(estring)
-        print("Encrypted String:")
-        print(str(encrypted))
-        print(type(encrypted))
-        time.sleep(2)
-
-    elif choice=="4":
-        key=load_key()
-        f=Fernet(key)
-        string=input("Enter String To Decrypt:")
-        estring=string.encode()
-        decrypted=f.decrypt(estring)
-        print("Decrypted String:")
-        print(decrypted)
-        time.sleep(2)
-
-    elif choice=="5":
-        def recursive_encrypter(filename):
-            key=load_key()
-            f=Fernet(key)
-            with open(filename, "rb") as file:
-                file_data = file.read()
-                encrypted_data = f.encrypt(file_data)
-            with open(filename, "wb") as file:
-                file.write(encrypted_data)
-
-        enpath=input("Enter Filepath for Recursive Encryption:")
-        for (root, dirs, filenames) in os.walk(enpath):
-            for file in filenames:
-                filename = os.path.join(root,file)
-                recursive_encrypter(filename)
-        print("Encryption Successful")
-        
-
-
-    elif choice=="6": 
-        def recursive_decrypter(filename):
-            key=load_key()
-            f=Fernet(key)
-            with open(filename, "rb") as file:
-                encrypted_data = file.read()
-                decrypted_data = f.decrypt(encrypted_data)
-            with open(filename, "wb") as file:
-                file.write(decrypted_data)
-        depath=input("Enter Filepath for Recursive Decryption:")
-        for (root, dirs, filenames) in os.walk(depath):
-            for file in filenames:
-                filename = os.path.join(root,file)
-                recursive_decrypter(filename)
-
-
-    elif choice=="7":
-        exit
-
-    else:
-        print("Invalid Input")
+    while True:
         print_options()
+        choice=input("Enter your choice [1-6]: ")
+
+        if choice=="0":
+            write_key()
+            print("Key Created")
+
+        elif choice=="1":
+            key=load_key()
+            f=Fernet(key)
+            time.sleep(1)
+            path=input("Enter Filepath:")
+            time.sleep(1)
+            with open(path, "rb") as file:
+                file_data=file.read()
+                encrypted_data=f.encrypt(file_data)
+            with open(path, "wb") as file:
+                file.write(encrypted_data)
+                time.sleep(1)
+            print("Encryption Successful")
+
+        elif choice=="2":
+            key=load_key()
+            f=Fernet(key)
+            write_key()
+            path=input("Enter Filepath:")
+            with open(path, "rb") as file:
+                encrypted_data=file.read()
+                decrypted_data=f.decrypt(encrypted_data)
+            with open(path, "wb") as file:
+                file.write(decrypted_data)
+            print("Decryption Successful")
+
+        elif choice=="3":
+            key=load_key()
+            f=Fernet(key)
+            string=input("Enter String To Encrypt:")
+            estring=string.encode()
+            encrypted=f.encrypt(estring)
+            print("Encrypted String:")
+            print(str(encrypted))
+            print(type(encrypted))
+            time.sleep(2)
+
+        elif choice=="4":
+            key=load_key()
+            f=Fernet(key)
+            string=input("Enter String To Decrypt:")
+            estring=string.encode()
+            decrypted=f.decrypt(estring)
+            print("Decrypted String:")
+            print(decrypted)
+            time.sleep(2)
+
+        elif choice=="5":
+            def recursive_encrypter(filename):
+                key=load_key()
+                f=Fernet(key)
+                with open(filename, "rb") as file:
+                    file_data = file.read()
+                    encrypted_data = f.encrypt(file_data)
+                with open(filename, "wb") as file:
+                    file.write(encrypted_data)
+
+            enpath=input("Enter Filepath for Recursive Encryption:")
+            for (root, dirs, filenames) in os.walk(enpath):
+                for file in filenames:
+                    filename = os.path.join(root,file)
+                    recursive_encrypter(filename)
+            print("Encryption Successful")
+            
+
+
+        elif choice=="6": 
+            def recursive_decrypter(filename):
+                key=load_key()
+                f=Fernet(key)
+                with open(filename, "rb") as file:
+                    encrypted_data = file.read()
+                    decrypted_data = f.decrypt(encrypted_data)
+                with open(filename, "wb") as file:
+                    file.write(decrypted_data)
+            depath=input("Enter Filepath for Recursive Decryption:")
+            for (root, dirs, filenames) in os.walk(depath):
+                for file in filenames:
+                    filename = os.path.join(root,file)
+                    recursive_decrypter(filename)
+
+
+        elif choice=="7":
+            break
+
+        else:
+            print("Invalid Input")
+            print_options()
+
 # Main
 
 main()
