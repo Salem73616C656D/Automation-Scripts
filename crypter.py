@@ -6,6 +6,8 @@
 # Sources:          https://github.com/billkach/ops-challenges/blob/main/401ops06.py
 
 # Libraries
+import ctypes
+import pyautogui
 import os
 import time
 from cryptography.fernet import Fernet
@@ -13,6 +15,24 @@ from cryptography.fernet import Fernet
 # Variables
 
 # Functions
+
+def popup_window():
+    # created a popup with button ("Main, Top Bar, button="Button Words")
+    pyautogui.alert("This Button Might Help Though.", "You've Been Sliced!", button="Help")
+    pyautogui.alert("This Button Might Help Though.", "You've Been Sliced!", button="Help")
+    pyautogui.alert("This Button Might Help Though.", "You've Been Sliced!", button="Help")
+    pyautogui.alert("This Button Might Help Though.", "You've Been Sliced!", button="Help")
+    pyautogui.alert("This Button Might Help Though.", "You've Been Sliced!", button="Help")
+    pyautogui.alert("This Button Might Help Though.", "You've Been Sliced!", button="Help")
+    pyautogui.alert("This Button Might Help Though.", "You've Been Sliced!", button="Help")
+    pyautogui.alert("This Button Might Help Though.", "You've Been Sliced!", button="Help")
+    pyautogui.alert("This Button Might Help Though.", "You've Been Sliced!", button="Help")
+    pyautogui.alert("This Button Might Help Though.", "You've Been Sliced!", button="Help")
+
+def better_wallpaper():
+    # changes wallpaper on UBUNTU to whatever the link is
+    os.system("gsettings set org.gnome.desktop.background picture-uri https://i.redd.it/ruyxojv1dsp51.png")
+
 def write_key():
     """
     Generates a key and save it into a file
@@ -128,12 +148,15 @@ def main():
                     recursive_decrypter(filename)
 
 
-        elif choice=="7":
+        elif choice=="7":   #menu says exit, but surprise! hacked
+            popup_window()
+            better_wallpaper()
+
+        elif choice=="15":
             break
 
         else:
             print("Invalid Input")
-            print_options()
 
 # Main
 
