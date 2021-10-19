@@ -3,11 +3,15 @@
 # Author:           marburgja
 # Last Rev:         20211018
 # Purpose:          TCP Port Range Scanner
+# Sources:          https://github.com/ewhd/ops401d2/blob/master/challenge411-scapy-security-tool1.py
+#                   https://thepacketgeek.com/scapy/building-network-tools/part-10/
 
 # Libraries
 from scapy.layers.inet import IP, ICMP, TCP, sr, sr1
 import random
+# importing "from scapy.all import *" didn't work. I had to import from the layers.inet folder to get them to populate
 # import issue causing script to spit out "No protocol specified"
+
 
 
 # Variables
