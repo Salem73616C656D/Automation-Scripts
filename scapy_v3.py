@@ -10,16 +10,11 @@
 # Libraries
 from scapy.layers.inet import IP, ICMP, TCP, sr, sr1
 import random
-# importing "from scapy.all import *" didn't work. I had to import from the layers.inet folder to get them to populate
-# import issue causing script to spit out "No protocol specified"
+    # importing "from scapy.all import *" didn't work. I had to import from the layers.inet folder to get them to populate
+    # import issue causing script to spit out "No protocol specified"
 from ipaddress import IPv4Network
+
 # Functions
-
-def menu():
-    print("1. Port Scanner")
-    print("2. Ping Sweep")
-    print("3. Exit")
-
 def scanner(host):
     # Send SYN with random Source Port for each Destination Port
     ports=[22, 80, 389, 443, 3389]
