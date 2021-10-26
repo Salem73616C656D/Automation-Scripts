@@ -92,6 +92,6 @@ def brute():
     file.close()
 
 # Main
-main()
+main() 
 
 # End
