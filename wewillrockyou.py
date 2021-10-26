@@ -32,7 +32,7 @@ Please Select Mode:
 
 def iterator():
     path=input("Enter Path to Wordlist/Dictionary:")
-    file=open(path, encoding="ISO-8859-1")
+    file=open(path, "r")
     line=file.readline() #reads the lines in the file into variable "line"
     while line:   #reads through the lines of the file and prints them to screen
         line=line.rstrip()
