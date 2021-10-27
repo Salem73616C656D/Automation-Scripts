@@ -6,6 +6,7 @@
 # Sources:          https://www.geeksforgeeks.org/python-how-to-search-for-a-string-in-text-files/
 #                   https://github.com/codefellows/seattle-cyber-401d3/blob/main/class-16/challenges/DEMO.md
 #                   https://gist.github.com/thewindcolince/d21a45b153f9f5662630fc94afba3bb0
+#                   https://www.geeksforgeeks.org/how-to-brute-force-zip-file-passwords-in-python/
 
 
 # Libraries
