@@ -7,6 +7,7 @@
 #                   https://github.com/codefellows/seattle-cyber-401d3/blob/main/class-16/challenges/DEMO.md
 #                   https://gist.github.com/thewindcolince/d21a45b153f9f5662630fc94afba3bb0
 #                   https://www.geeksforgeeks.org/how-to-brute-force-zip-file-passwords-in-python/
+#                   https://stackoverflow.com/questions/40088496/how-to-use-pythons-rotatingfilehandler/40088591
 
 
 # Libraries
@@ -16,11 +17,12 @@ from pexpect import pxssh
 from tqdm import tqdm
 
 # Variables
-# logging.basicConfig(filename='rockyou.log', encoding='utf-8', level=logging.DEBUG, format='%(asctime)s %(message)s')
-logger=logging.getLogger('my_logger')
-logger.setLevel(logging.DEBUG)
-handler=RotatingFileHandler('test.log', maxBytes=256, backupCount=3) #set each value
-logger.addHandler(handler)
+#logging.basicConfig(filename='rockyou.log', encoding='utf-8', level=logging.DEBUG, format='%(asctime)s %(message)s')
+logging.basicConfig(
+        handlers=[RotatingFileHandler('rockyou.log', maxBytes=100000, backupCount=10)],
+        level=logging.DEBUG,
+        format="%(asctime)s %(levelname)s %(message)s",
+        datefmt='%Y-%m-%dT%H:%M:%S')
 
 # Functions
 
@@ -72,14 +74,15 @@ def inspector():
         index+=1
         if passwd in line: # if the password matches the current line, break loop
             flag=1
-            break
         
         else:
-            logger.error('Password', passwd, 'was not found')
+            logging.info('Password Search Failed')
+            print('Password Search Failed')
+            break
             
     if flag==1: # if the password was matched above, print confirmation and line number
         print("That Password Was Found!","Line", index)
-        logger.info('Password', passwd, 'was found on line', index)
+        logging.info('Password Search Successful')
 
 
 def connect(host,user,line):
@@ -95,7 +98,7 @@ def connect(host,user,line):
         print("\n")
         print("terminate")
         print("reason:program stopped by user",)
-        logger.info('SSH Connection Terminated By User')
+        logging.info('SSH Connection Terminated By User')
         sys.exit(0)
 
 def brute():
