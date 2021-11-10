@@ -11,8 +11,16 @@
 
 # Libraries
 import sys, time, termcolor, zipfile, logging
+from logging.handlers import RotatingFileHandler
 from pexpect import pxssh
 from tqdm import tqdm
+
+# Variables
+# logging.basicConfig(filename='rockyou.log', encoding='utf-8', level=logging.DEBUG, format='%(asctime)s %(message)s')
+logger=logging.getLogger('my_logger')
+logger.setLevel(logging.DEBUG)
+handler=RotatingFileHandler('test.log', maxBytes=256, backupCount=3) #set each value
+logger.addHandler(handler)
 
 # Functions
 
@@ -55,7 +63,6 @@ def iterator():
     file.close()
 
 def inspector():
-    logging.basicConfig(filename='rockyou.log', encoding='utf-8', level=logging.DEBUG, format='%(asctime)s %(message)s')
     path=input("Enter Path to Wordlist/Dictionary:")
     passwd=input("Enter Password For Search:")
     file=open(path, "r")
@@ -68,15 +75,14 @@ def inspector():
             break
         
         else:
-            logging.error('Password', passwd, 'was not found')
+            logger.error('Password', passwd, 'was not found')
             
     if flag==1: # if the password was matched above, print confirmation and line number
         print("That Password Was Found!","Line", index)
-        logging.info('Password', passwd, 'was found on line', index)
+        logger.info('Password', passwd, 'was found on line', index)
 
 
 def connect(host,user,line):
-    logging.basicConfig(filename='rockyou.log', encoding='utf-8', level=logging.DEBUG, format='%(asctime)s %(message)s')
     try:
         ssh=pxssh.pxssh()
         ssh.force_password=True
@@ -89,7 +95,7 @@ def connect(host,user,line):
         print("\n")
         print("terminate")
         print("reason:program stopped by user",)
-        logging.info('SSH Connection Terminated By User')
+        logger.info('SSH Connection Terminated By User')
         sys.exit(0)
 
 def brute():
