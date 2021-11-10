@@ -80,7 +80,6 @@ def inspector():
         
         else:
             logging.info('Password Search Failed')
-            print('Password Search Failed')
             break
             
     if flag==1: # if the password was matched above, print confirmation and line number
