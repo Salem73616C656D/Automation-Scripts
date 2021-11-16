@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 # Script Name:      fileseek
 # Author:           marburgja
-# Last Rev:         20211115
+# Last Rev:         20211116
 # Purpose:          Search a directory for certain files and print results to screen
 
 # Libraries
