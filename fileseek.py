@@ -5,10 +5,13 @@
 # Purpose:          Search a directory for certain files and print results to screen
 
 # Libraries
+
 import os
+
 # Variables
 
 # Functions
+
 def find_all():
     path=input("Enter Directory Path To Scan:")
     name=input("Enter Name To Scan For:")
@@ -23,5 +26,7 @@ def find_all():
         print("Total Number Found:", len(result)) # prints the number of results from search
 
 # Main
+
 find_all()
+
 # End
