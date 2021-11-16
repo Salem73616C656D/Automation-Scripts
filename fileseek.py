@@ -25,7 +25,3 @@ def find_all():
 # Main
 find_all()
 # End
-
-
-
-
