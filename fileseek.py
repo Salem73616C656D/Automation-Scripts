@@ -2,7 +2,8 @@
 # Script Name:      fileseek
 # Author:           marburgja
 # Last Rev:         20211117
-# Purpose:          Search a directory for certain files and print results to screen
+# Purpose:          Search a directory for certain files and print results of scan to screen
+#                   and give specific details of the file chosen by user
 
 # Libraries
 
