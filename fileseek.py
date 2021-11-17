@@ -46,7 +46,19 @@ def find_all():
     if result=={}:
         print("Error 404") # printed when there are no results from the scan
     else:
-        print("Format: [Time, Hash Value, File Size(Bytes)]")
+        print("""*
+*
+*
+*
+*
+*
+Format: [Time, Hash Value, File Size(Bytes)]
+*
+*
+*
+*
+*
+""")
         print(result) # prints search results
         print("Total Number Found:", len(result)) # prints the number of results from search
 
