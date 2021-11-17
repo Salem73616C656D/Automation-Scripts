@@ -34,6 +34,11 @@ def find_all():
     name=input("Enter Name To Scan For:")
     result={}
     for root, dirs, files in os.walk(path): # searches dirs and sub dirs for "name"
+        print(root)
+        for dir in dirs:
+            print(os.path.join(root,dir))
+        for file in files:
+            print(os.path.join(root,file))
         if name in files:
             pathtofile=os.path.join(root,name)
             fileresult=[currentime(), hasher(pathtofile),filesize(pathtofile) ]
