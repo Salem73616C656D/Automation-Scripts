@@ -71,7 +71,7 @@ Format: [Time, Hash Value, File Size(Bytes)]
 """)
         print(result) # prints search results
         print("Total Number Found:", len(result)) # prints the number of results from search
-
+        print("Total Number Scanned:", len(files)) # prints the number of files scanned
 # Main
 
 find_all()
