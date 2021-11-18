@@ -7,7 +7,8 @@
 
 # Libraries
 
-import os,time,datetime,hashlib
+import os,datetime,hashlib,time
+from dotenv import load_dotenv
 
 # Variables
 
@@ -15,6 +16,13 @@ import os,time,datetime,hashlib
 def currentime(): # creates a timestamp to be called 
     rn=datetime.datetime.now()
     return rn.strftime('%m-%d-%Y %H:%M:%S')
+
+def virusscan(patharg):
+    load_dotenv()
+    apikey = os.environ.get("API_KEY") # Set your environment variable before proceeding. You'll need a free API key from virustotal.com so get signed up there first.
+    # This concatenates everything into a working shell statement that gets passed into virustotal-search.py
+    query = ('python3 virustotal-search.py -k ' + str(apikey) + ' -m ' + hasher(patharg))
+    os.system(query)
 
 def filesize(patharg): # gets filesize of the selected file
     size=os.path.getsize(patharg)
@@ -41,8 +49,10 @@ def find_all():
             print(os.path.join(root,file))
         if name in files: # if the file is found, add it to the result dictionary
             pathtofile=os.path.join(root,name)
-            fileresult=[currentime(), hasher(pathtofile),filesize(pathtofile) ]
+            fileresult=[currentime(), hasher(pathtofile),filesize(pathtofile)]
+            virusscan(pathtofile)
             result[pathtofile]=fileresult
+
     if result=={}:
         print("Error 404") # printed when there are no results from the scan
     else:
