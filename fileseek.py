@@ -49,8 +49,8 @@ def find_all():
             print(os.path.join(root,file))
         if name in files: # if the file is found, add it to the result dictionary
             pathtofile=os.path.join(root,name)
-            fileresult=[currentime(), hasher(pathtofile),filesize(pathtofile)]
-            virusscan(pathtofile)
+            fileresult=[currentime(), hasher(pathtofile),filesize(pathtofile),virusscan(pathtofile)]
+            #virusscan(pathtofile)
             result[pathtofile]=fileresult
 
     if result=={}:
