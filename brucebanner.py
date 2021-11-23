@@ -4,6 +4,7 @@
 # Last Rev:         20211122
 # Purpose:          perform banner grabbing via various tools
 
+
 # Libraries
 import os
 
