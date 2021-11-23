@@ -20,23 +20,18 @@ def port():
     return tgtport
 
 def netcat():
-    #tgtport=input("Enter Target Port Number:")
-    #ipurl=input("Enter Target IP or URL:")
     query=('nc -N ' +  destination() + ' '+ port())
     print("***Press 'CTL + D' To Exit NETCAT Session***")
     return os.system(query)
 
 def telnet():
-    #tgtport=input("Enter Target Port Number:")
-    #ipurl=input("Enter Target IP or URL:")
     query=('telnet ' +  destination() + ' '+ port())
     print("***Press 'CTL + ]' then 'CTL + D' To Exit TELNET Session***")
     return os.system(query)
 
 def nmap():
-    #tgtport=input("Enter Target Port Number:")
-    #ipurl=input("Enter Target IP or URL:")
-    query=('nmap -sV ' + destination() + ' -p' + port())
+    #query=('nmap -sV ' + destination() + ' -p' + port())
+    query=('nmap -F ' + destination())
     return os.system(query)
 
 def main():
